@@ -16,3 +16,4 @@ jobs:
             *ci-fail*) echo "failing on purpose"; exit 1 ;;
             *) echo "passing" ;;
           esac
+# touched on purpose: the checker must refuse this PR
