@@ -1,0 +1,18 @@
+name: ci
+on:
+  pull_request:
+  push:
+    branches: [main]
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Pass or fail on purpose
+        env:
+          HEAD_REF: ${{ github.head_ref }}
+          COMMIT_MSG: ${{ github.event.head_commit.message }}
+        run: |
+          case "$HEAD_REF $COMMIT_MSG" in
+            *ci-fail*) echo "failing on purpose"; exit 1 ;;
+            *) echo "passing" ;;
+          esac
