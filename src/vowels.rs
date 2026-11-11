@@ -1,6 +1,11 @@
-/// How many of a, e, i, o, u appear in `s`, in either case.
+/// Whether `c` is one of a, e, i, o, u, in either case.
+fn is_vowel(c: char) -> bool {
+    matches!(c.to_ascii_lowercase(), 'a' | 'e' | 'i' | 'o' | 'u')
+}
+
+/// How many vowels (a, e, i, o, u, in either case) appear in `s`.
 pub fn count_vowels(s: &str) -> usize {
-    s.chars().filter(|c| matches!(c.to_ascii_lowercase(), 'a' | 'e' | 'i' | 'o' | 'u')).count()
+    s.chars().filter(|&c| is_vowel(c)).count()
 }
 
 #[cfg(test)]
@@ -15,6 +20,7 @@ mod tests {
     #[test]
     fn counts_both_cases() {
         assert_eq!(count_vowels("ProofStream ON NEAR"), 7);
+        assert_eq!(count_vowels("AEIOU aeiou"), 10);
     }
 
     #[test]
