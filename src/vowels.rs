@@ -18,7 +18,7 @@ mod tests {
     }
 
     #[test]
-    fn a_string_without_vowels_has_none() {
+    fn a_word_without_vowels_has_none() {
         assert_eq!(count_vowels("rhythm"), 0);
     }
 }
